@@ -18,12 +18,12 @@ def Qnorm(Q):
         Q=np.array(Q);
     if len(Q.shape)==1:
         if Q.shape[0] % 4 == 0:
-            Q.shape=[Q.size/4,4]
+            Q.shape=[Q.size//4,4]
         else:
             print ("Wrong number of elements")
             sys.exit(1)
     if Q.shape[1] != 4:
-        Q.shape=[Q.size/4,4]
+        Q.shape=[Q.size//4,4]
     Q=np.sqrt(np.power(Q,2).sum(axis=1))
     return(Q);
 
@@ -37,12 +37,12 @@ def Qnormalize(Q):
     if lqshp==1:
         if Q.shape[0] % 4 == 0:
             if Q.shape[0] > 4:
-                Q.shape=[Q.size/4,4]
+                Q.shape=[Q.size//4,4]
         else:
             print ("Wrong number of elements")
             sys.exit(1)
     elif Q.shape[lqshp-1] != 4:
-        Q.shape=[Q.size/4,4]
+        Q.shape=[Q.size//4,4]
     if lqshp==1:
         Q /= np.sqrt(np.power(Q,2).sum(axis=0))
     else:
@@ -59,12 +59,12 @@ def EV2Q(EV,tol = 10 * np.spacing(1), ichk=False, ignoreAllChk=False):
         EV=np.array(EV);
     if len(EV.shape)==1:
         if EV.shape[0] % 4 == 0:
-            EV.shape=[EV.size/4,4]
+            EV.shape=[EV.size//4,4]
         else:
             print ("Wrong number of elements")
             sys.exit(1)
     if EV.shape[1] != 4:
-        EV.shape=[EV.size/4,4]
+        EV.shape=[EV.size//4,4]
     EVtmp = EV[:,0:4]#4
     halfMU = EV[:,3] / 2
     delta = np.sqrt(np.power(EVtmp, 2).sum(axis=0))
@@ -87,12 +87,12 @@ def Q2EV(Q,tol = 10 * np.spacing(1), ichk=False, ignoreAllChk=False):
         Q=np.array(Q);
     if len(Q.shape)==1:
         if Q.shape[0] % 4 == 0:
-            Q.shape=[Q.size/4,4]
+            Q.shape=[Q.size//4,4]
         else:
             print ("Wrong number of elements")
             sys.exit(1)
     if Q.shape[1] != 4:
-        Q.shape=[Q.size/4,4]
+        Q.shape=[Q.size//4,4]
     if ~ignoreAllChk:
         if ichk and (abs(Q) > tol).any():
             print ("Warning: (At least one of the) Input quaternion(s) is not a unit vector\n")
@@ -132,12 +132,12 @@ def Q2DCM(Q,tol = 10 * np.spacing(1), ichk=False, ignoreAllChk=False):
         Q=np.array(Q);
     if len(Q.shape)==1:
         if Q.shape[0] % 4 == 0:
-            Q.shape=[Q.size/4,4]
+            Q.shape=[Q.size//4,4]
         else:
             print ("Wrong number of elements")
             sys.exit(1)
     if Q.shape[1] != 4:
-        Q.shape=[Q.size/4,4]
+        Q.shape=[Q.size//4,4]
     if ~ignoreAllChk:
         if ichk and (abs(Q) > tol).any():
             print ("Warning: (At least one of the) Input quaternion(s) is not a unit vector\n")
@@ -207,7 +207,7 @@ def DCM2Q(DCM,tol = 10 * np.spacing(1), ichk=False, ignoreAllChk=False):
             sys.exit(1)
     if len(DCM.shape)==3:
         if np.prod(DCM.shape[1:3]) % 9 == 0:
-            DCM.shape=[DCM.size/9,3,3]
+            DCM.shape=[DCM.size//9,3,3]
         else:
             print ("Wrong number of elements")
             sys.exit(1)
@@ -325,12 +325,12 @@ def EA2EV(EA,EulerOrder="zyx",tol = 10 * np.spacing(1), ichk=False, ignoreAllChk
         EA=np.array(EA);
     if len(EA.shape)==1:
         if EA.shape[0] % 3 == 0:
-            EA.shape=[EA.size/3,3]
+            EA.shape=[EA.size//3,3]
         else:
             print ("Wrong number of elements")
             sys.exit(1)
     if EA.shape[1] != 3:
-        EA.shape=[EA.size/3,3]
+        EA.shape=[EA.size//3,3]
     Q=EA2Q(EA, EulerOrder,tol, ichk, ignoreAllChk);
     EV=Q2EV(Q, tol, ichk, ignoreAllChk);
     return(EV);
@@ -347,12 +347,12 @@ def EV2EA(EV,EulerOrder="zyx",tol = 10 * np.spacing(1), ichk=False, ignoreAllChk
         EV=np.array(EV);
     if len(EV.shape)==1:
         if EV.shape[0] % 4 == 0:
-            EV.shape=[EV.size/4,4]
+            EV.shape=[EV.size//4,4]
         else:
             print ("Wrong number of elements")
             sys.exit(1)
     if EV.shape[1] != 4:
-        EV.shape=[EV.size/4,4]
+        EV.shape=[EV.size//4,4]
     Q=EV2Q(EV, tol, ichk, ignoreAllChk);
     EA=Q2EA(Q, EulerOrder, tol, ichk, ignoreAllChk);
     return(EA);
@@ -374,12 +374,12 @@ def EA2Q(EA,EulerOrder="zyx",tol = 10 * np.spacing(1), ichk=False, ignoreAllChk=
         EA=np.array(EA);
     if len(EA.shape)==1:
         if EA.shape[0] % 3 == 0:
-            EA.shape=[EA.size/3,3]
+            EA.shape=[EA.size//3,3]
         else:
             print ("Wrong number of elements")
             sys.exit(1)
     if EA.shape[1] != 3:
-        EA.shape=[EA.size/3,3]
+        EA.shape=[EA.size//3,3]
     theta = EA[:, 1] # Nx1
     if ignoreAllChk==False:
         if EulerOrder[0]!=EulerOrder[2]:
@@ -450,12 +450,12 @@ def Q2EA(Q,EulerOrder="zyx",tol = 10 * np.spacing(1), ichk=False, ignoreAllChk=F
         Q=np.array(Q);
     if len(Q.shape)==1:
         if Q.shape[0] % 4 == 0:
-            Q.shape=[Q.size/4,4]
+            Q.shape=[Q.size//4,4]
         else:
             print ("Wrong number of elements")
             sys.exit(1)
     if Q.shape[1] != 4:
-        Q.shape=[Q.size/4,4]
+        Q.shape=[Q.size//4,4]
     if ~ignoreAllChk:
         if ichk and (abs(Q) > tol).any():
             print ("Warning: (At least one of the) Input quaternion(s) is not a unit vector\n")
@@ -550,7 +550,7 @@ def DCM2EA(DCM, EulerOrder="zyx", tol = 10 * np.spacing(1), ichk=False, ignoreAl
             sys.exit(1)
     if len(DCM.shape)==3:
         if np.prod(DCM.shape[1:3]) % 9 == 0:
-            DCM.shape=[DCM.size/9,3,3]
+            DCM.shape=[DCM.size//9,3,3]
         else:
             print ("Wrong number of elements")
             sys.exit(1)
@@ -579,7 +579,7 @@ def DCM2EV(DCM, tol = 10 * np.spacing(1), ichk=False, ignoreAllChk=False):
             sys.exit(1)
     if len(DCM.shape)==3:
         if np.prod(DCM.shape[1:3]) % 9 == 0:
-            DCM.shape=[DCM.size/9,3,3]
+            DCM.shape=[DCM.size//9,3,3]
         else:
             print ("Wrong number of elements")
             sys.exit(1)
@@ -595,12 +595,12 @@ def EV2DCM(EV, tol = 10 * np.spacing(1), ichk=False, ignoreAllChk=False):
         EV=np.array(EV);
     if len(EV.shape)==1:
         if EV.shape[0] % 4 == 0:
-            EV.shape=[EV.size/4,4]
+            EV.shape=[EV.size//4,4]
         else:
             print ("Wrong number of elements")
             sys.exit(1)
     if EV.shape[1] != 4:
-        EV.shape=[EV.size/4,4]
+        EV.shape=[EV.size//4,4]
     Q=EV2Q(EV, tol, ichk, ignoreAllChk);
     DCM=Q2DCM(Q, tol, ichk, ignoreAllChk);
     return(DCM);
@@ -619,12 +619,12 @@ def EA2DCM(EA,EulerOrder="zyx",tol = 10 * np.spacing(1), ichk=False, ignoreAllCh
         EA=np.array(EA);
     if len(EA.shape)==1:
         if EA.shape[0] % 3 == 0:
-            EA.shape=[EA.size/3,3]
+            EA.shape=[EA.size//3,3]
         else:
             print ("Wrong number of elements")
             sys.exit(1)
     if EA.shape[1] != 3:
-        EA.shape=[EA.size/3,3]
+        EA.shape=[EA.size//3,3]
     Q=EA2Q(EA,EulerOrder, tol, ichk, ignoreAllChk);
     DCM=Q2DCM(Q, tol, ichk, ignoreAllChk);
     return(DCM);
@@ -646,12 +646,12 @@ def EA2EA(EA,EulerOrder1="zyx",EulerOrder2="xyz",tol = 10 * np.spacing(1), ichk=
         EA=np.array(EA);
     if len(EA.shape)==1:
         if EA.shape[0] % 3 == 0:
-            EA.shape=[EA.size/3,3]
+            EA.shape=[EA.size//3,3]
         else:
             print ("Wrong number of elements")
             sys.exit(1)
     if EA.shape[1] != 3:
-        EA.shape=[EA.size/3,3]
+        EA.shape=[EA.size//3,3]
     Q=EA2Q(EA,EulerOrder1, tol, ichk, ignoreAllChk);
     Q=Qnormalize(Q);
     EA2=Q2EA(Q,EulerOrder2, tol, ichk, ignoreAllChk);
@@ -665,12 +665,12 @@ def Q2GL(Q, tol = 10 * np.spacing(1), ichk=False, ignoreAllChk=False):
         Q=np.array(Q);
     if len(Q.shape)==1:
         if Q.shape[0] % 4 == 0:
-            Q.shape=[Q.size/4,4]
+            Q.shape=[Q.size//4,4]
         else:
             print ("Wrong number of elements")
             sys.exit(1)
     if Q.shape[1] != 4:
-        Q.shape=[Q.size/4,4]
+        Q.shape=[Q.size//4,4]
     if ~ignoreAllChk:
         if ichk and (abs(Q) > tol).any():
             print ("Warning: (At least one of the) Input quaternion(s) is not a unit vector\n")

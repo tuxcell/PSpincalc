@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="PSpincalc",
-    version="0.2.3",
+    version="0.2.4",
     author="Jose Gama",
     author_email="josephgama@yahoo.com",
     maintainer="tuxcell",

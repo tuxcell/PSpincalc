@@ -8,6 +8,8 @@ setuptools.setup(
     version="0.2.3",
     author="Jose Gama",
     author_email="josephgama@yahoo.com",
+    maintainer="tuxcell",
+    maintainer_email="josephgama@yahoo.com",
     description="Package for converting between attitude representations (DCM, Euler angles, Quaternions, and Euler vectors)",
     long_description=long_description,
     long_description_content_type="text/markdown",

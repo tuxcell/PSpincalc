@@ -13,6 +13,11 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/tuxcell/PSpincalc",
     packages=setuptools.find_packages(),
-    license="GNU General Public License v3 or later (GPLv3+)"
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: GNU General Public License v3 or later (GPLv3+)",
+        "Operating System :: OS Independent",
+    ],
+    python_requires='>=3.6',
 )
 

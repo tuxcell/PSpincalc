@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="PSpincalc",
-    version="0.2.4",
+    version="0.2.6",
     author="Jose Gama",
     author_email="josephgama@yahoo.com",
     maintainer="tuxcell",
@@ -16,16 +16,11 @@ setuptools.setup(
     url="https://github.com/tuxcell/PSpincalc",
     packages=setuptools.find_packages(),
     classifiers=[
+        "Programming Language :: Python :: 2.7",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.2",
-        "Programming Language :: Python :: 3.3",
-        "Programming Language :: Python :: 3.4",
-        "Programming Language :: Python :: 3.5",
-        "Programming Language :: Python :: 3.6",
-        "Programming Language :: Python :: 3.7",
         "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
         "Operating System :: OS Independent",
     ],
-    python_requires='>=3',
+    python_requires='>=2/7',
 )
 

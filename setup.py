@@ -1,11 +1,16 @@
-import setuptools
+from setuptools import setup, find_packages
+from os import path
+from io import open
 
-with open("README.md", "r") as fh:
-    long_description = fh.read()
+here = path.abspath(path.dirname(__file__))
 
-setuptools.setup(
+# Get the long description from the README file
+with open(path.join(here, 'README.md'), encoding='utf-8') as f:
+    long_description = f.read()
+
+setup(
     name="PSpincalc",
-    version="0.2.6",
+    version="0.2.7",
     author="Jose Gama",
     author_email="josephgama@yahoo.com",
     maintainer="tuxcell",
@@ -14,7 +19,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/tuxcell/PSpincalc",
-    packages=setuptools.find_packages(),
+    packages=find_packages(),
     classifiers=[
         "Programming Language :: Python :: 2.7",
         "Programming Language :: Python :: 3",
